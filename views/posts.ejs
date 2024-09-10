@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-4">
+    <h1 class="mb-4">Home Page</h1>
+    <a href="/add-post" class="btn btn-primary mb-3">Add New Post</a>
+    
+    <ul class="list-group">
+      <% posts.forEach(function(post, index) { %>
+        <li class="list-group-item">
+          <h5><%= post.title %></h5>
+          <p><%= post.content %></p>
+          <!-- Links for editing and deleting posts -->
+          <a href="/edit/<%= index %>" class="btn btn-warning btn-sm">Edit</a>
+          <form action="/delete/<%= index %>" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+  </div>
+
+  <!-- Include the footer -->
+  <%- include('footer') %>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

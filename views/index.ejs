@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  
+  <h1>Blog Posts</h1>
+
+  <!-- Form for creating a new post -->
+  <form action="/submit" method="POST">
+    <input type="text" name="title" placeholder="Post Title" required>
+    <textarea name="content" placeholder="Post Content" required></textarea>
+    <button type="submit">Add Post</button>
+  </form>
+
+  <h2>All Posts</h2>
+  <ul>
+    <% posts.forEach(function(post, index) { %>
+      <li>
+        <strong><%= post.title %></strong>: <%= post.content %>
+        <!-- Links for editing and deleting posts -->
+        <a href="/edit/<%= index %>">Edit</a>
+        <form action="/delete/<%= index %>" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    <% }); %>
+  </ul>
+
+  <!-- Include the footer -->
+  <%- include('footer') %>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
